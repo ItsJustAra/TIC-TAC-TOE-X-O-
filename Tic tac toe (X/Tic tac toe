@@ -3,16 +3,15 @@
 
 //Name's data type
 
+
+
 typedef struct 
  {
  	char name[30] ;
  	
- 	
  }PlayersInfos;
- 
- 
- 
- void  ShowMeTheBoard(int *board )
+
+ void  ShowMeTheBoard(int *board , PlayersInfos  player01, PlayersInfos  player02 )
  {
  	char Gboard[3][3];
  	
@@ -37,10 +36,7 @@ typedef struct
  			
  			
  			Gboard[0][0] = 'X';
- 			
- 			
- 			
- 			
+
  			
  			printf("\n");
  		}
@@ -170,6 +166,8 @@ typedef struct
  
  	printf("\033[0;33m"); //Set the text to the color yellow
  	
+ 	//Display The Board
+ 	
  	printf("| %c || %c || %c |\n\n",Gboard[0][0],Gboard[0][1],Gboard[0][2]);
  	
  	printf("| %c || %c || %c |\n\n",Gboard[1][0],Gboard[1][1],Gboard[1][2]);
@@ -178,85 +176,102 @@ typedef struct
  	
  	printf("\n\n");
  	
- 	int game = 1 ;
+ 	//Condition
  	
- 	while( game < 6 )
+ 	int Row , Colum ;
+ 	
+ 	//horizontal line
+ 	
+ 	for( Row = 0 ; Row < 3 ; ++Row)
  	{
- 		if( Gboard[0][0] == Gboard[0][1] && Gboard[0][0] == Gboard[0][2])
+ 	
+ 		if( Gboard[Row][0] == Gboard[Row][1] && Gboard[Row][0] == Gboard[Row][2] )
  		{
- 			printf("The winner is : %c",Gboard[0][0]);
+ 			if(Gboard[Row][0] == 'X')
+ 			{
+ 				printf("The Winner is %s {%c} " ,player01.name , Gboard[Row][0]);
+ 				break;
+ 			}
  			
- 			break;
- 		}
- 		
- 		else if( Gboard[1][0] == Gboard[1][1] && Gboard[1][0] == Gboard[1][2])
- 		{
- 			printf("The winner is : %c",Gboard[1][0]);
- 			
- 			break;
- 		}
- 		
- 		else if( Gboard[2][0] == Gboard[2][1] && Gboard[2][0] == Gboard[2][2])
- 		{
- 			printf("The winner is : %c",Gboard[2][0]);
- 			
- 			break;
- 		}
- 		
- 		
- 		
- 		
- 		else if( Gboard[0][0] == Gboard[1][0] && Gboard[0][0] == Gboard[2][0])
- 		{
- 			printf("The winner is : %c",Gboard[0][0]);
- 			
- 			break;
- 		}
- 		
- 		else if( Gboard[0][1] == Gboard[1][1] && Gboard[0][1] == Gboard[2][1])
- 		{
- 			printf("The winner is : %c",Gboard[0][1]);
- 			
- 			break;
- 		}
- 		
- 		else if( Gboard[0][2] == Gboard[1][2] && Gboard[0][2] == Gboard[2][2])
- 		{
- 			printf("The winner is : %c",Gboard[0][2]);
- 			
- 			break;
- 		}
- 		
- 		
- 		else if( Gboard[0][0] == Gboard[1][1] && Gboard[0][0] == Gboard[2][2])
- 		{
- 			printf("The winner is : %c",Gboard[0][0]);
- 			
- 			break;
- 		}
- 		
- 		else if( Gboard[0][2] == Gboard[1][1] && Gboard[0][2] == Gboard[2][0])
- 		{
- 			printf("The winner is : %c",Gboard[0][2]);
- 			
- 			break;
+ 			else if(Gboard[Row][0] == 'O')
+ 			{
+ 				printf("The Winner is %s {%c} " ,player02.name , Gboard[Row][0]);
+ 				break;
+ 			}
  		}
  		
  		else
  		{
- 			printf("Contunie !");
+ 			printf("Contunie !\n\n");
  			break;
  		}
- 		
- 		break;
- 		
- 		++game ;
  	}
+ 	
+ 	//Vertical line 
+ 	
+ 	for( Colum = 0 ; Colum < 3 ; ++Colum)
+ 	{
+ 	
+ 		if( Gboard[0][Colum] == Gboard[1][Colum] && Gboard[0][Colum] == Gboard[2][Colum] )
+ 		{
+ 			if(Gboard[0][Colum] == 'X')
+ 			{
+ 				printf("The Winner is %s {%c} " ,player01.name , Gboard[0][Colum]);
+ 				break;
+ 			}
  			
+ 			else if(Gboard[0][Colum] == 'O')
+ 			{
+ 				printf("The Winner is %s {%c} " ,player02.name , Gboard[0][Colum]);
+ 				break;
+ 			}
+ 		}
+ 		
+ 	}
+ 	
+ 	//Primary and secondary diameter
+ 	
+ 	for(Row = 0 ;Row < 3 ;++Row)
+ 	{
+ 		for(Colum = 0 ; Colum < 3;++Colum)
+ 		
+ 		if( Row == Colum)
+ 		
+ 		if(Gboard[Row][Colum] == 'X')
+ 			{
+ 				printf("The Winner is %s {%c} " ,player01.name , Gboard[Row][Colum]);
+ 				break;
+ 			}
+ 			
+ 			else if(Gboard[Row][Colum] == 'O')
+ 			{
+ 				printf("The Winner is %s {%c} " ,player02.name , Gboard[Row][Colum]);
+ 				break;
+ 			}
+ 	}
+ 	
+ 	for(Row = 0 ;Row < 3 ;++Row)
+ 	{
+ 		for(Colum = 0 ; Colum < 3;++Colum)
+ 		
+ 		if( Row + Colum == 2 )
+ 		
+ 		if(Gboard[Row][Colum] == 'X')
+ 			{
+ 				printf("The Winner is %s {%c} " ,player01.name , Gboard[Row][Colum]);
+ 				break;
+ 			}
+ 			
+ 			else if(Gboard[Row][Colum] == 'O')
+ 			{
+ 				printf("The Winner is %s {%c} " ,player02.name , Gboard[Row][Colum]);
+ 				break;
+ 			}
+ 	}
  }
  
  
-int main ( int game )
+int main (void)
 {
 	int board[9] =  { NULL };
 	
@@ -394,7 +409,7 @@ int main ( int game )
 		
 		printf("\n\n");
 		
-		ShowMeTheBoard(board);
+		ShowMeTheBoard(board , player01 , player02);
 		
 		printf("\n\n");
 		
@@ -432,7 +447,8 @@ int main ( int game )
 	
 		printf("\n\n");
 		
-	    ShowMeTheBoard(board);
+	    
+		ShowMeTheBoard(board , player01 , player02);
 		
 		printf("\n\n");
 		
@@ -442,14 +458,10 @@ int main ( int game )
 		
 		turn += 1 ;
 	
-	}while( turn <= 5 || game < 6 );
+	}while( turn <= 5 );
 	
 	printf("\n\n");
-	
-	
-		
+
 		printf("\33[0;37m"); //Set the text to the color white
-		printf(" Credits : Walid Araar");
-	
-	
+		printf(" Credits :  Walid Araar");
 }
