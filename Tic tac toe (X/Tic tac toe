@@ -3,15 +3,15 @@
 
 //Name's data type
 
-
+char Who_is_The_Winner ;
 
 typedef struct 
  {
  	char name[30] ;
- 	
+ 
  }PlayersInfos;
 
- void  ShowMeTheBoard(int *board , PlayersInfos  player01, PlayersInfos  player02 )
+ void  ShowMeTheBoard(int *board , PlayersInfos  player01, PlayersInfos  player02  )
  {
  	char Gboard[3][3];
  	
@@ -178,109 +178,125 @@ typedef struct
  	
  	//Condition
  	
- 	int Row , Colum ;
+ 	int r = 1 ;
  	
- 	//horizontal line
+ 	int row ;
  	
- 	for( Row = 0 ; Row < 3 ; ++Row)
- 	{
+ 	int colum ;
  	
- 		if( Gboard[Row][0] == Gboard[Row][1] && Gboard[Row][0] == Gboard[Row][2] )
- 		{
- 			if(Gboard[Row][0] == 'X')
- 			{
- 				printf("The Winner is %s {%c} " ,player01.name , Gboard[Row][0]);
- 				break;
- 			}
- 			
- 			else if(Gboard[Row][0] == 'O')
- 			{
- 				printf("The Winner is %s {%c} " ,player02.name , Gboard[Row][0]);
- 				break;
- 			}
- 		}
+ 	//Horizonal line 
+ 	
+ 	
+ 		for( row = 0 ; row < 3 ;++row)
+ 	   {
+ 		if( Gboard[row][0] != NULL && Gboard[row][1] != NULL && Gboard[row][2] != NULL  )
  		
- 		else
+ 		if( Gboard[row][0] == Gboard[row][1] && Gboard[row][0] == Gboard[row][2]  )
+ 		
+ 		if(Gboard[row][0] == 'X')
  		{
- 			printf("Contunie !\n\n");
+ 			printf("The winner is %s {%c}\n\n",player01.name,Gboard[row][0]);
+ 			Who_is_The_Winner == "winner";
  			break;
  		}
+ 		
+ 		else if( Gboard[row][0] == 'O')
+ 		{
+ 			printf("The winner is %s {%c}\n\n",player02.name,Gboard[row][0]);
+ 			Who_is_The_Winner == "winner";
+ 			break;
+ 		}
+ 		
+ 		
  	}
  	
  	//Vertical line 
  	
- 	for( Colum = 0 ; Colum < 3 ; ++Colum)
- 	{
  	
- 		if( Gboard[0][Colum] == Gboard[1][Colum] && Gboard[0][Colum] == Gboard[2][Colum] )
+ 	
+ 	for( colum = 0 ; colum  < 3 ;++colum)
+ 	{
+ 		if( Gboard[0][colum] != NULL && Gboard[1][colum] != NULL && Gboard[2][colum] != NULL  )
+ 		
+ 		if( Gboard[0][colum] == Gboard[1][colum] && Gboard[0][colum] == Gboard[2][colum]  )
+ 		
+ 		if(Gboard[0][colum] == 'X')
  		{
- 			if(Gboard[0][Colum] == 'X')
- 			{
- 				printf("The Winner is %s {%c} " ,player01.name , Gboard[0][Colum]);
- 				break;
- 			}
- 			
- 			else if(Gboard[0][Colum] == 'O')
- 			{
- 				printf("The Winner is %s {%c} " ,player02.name , Gboard[0][Colum]);
- 				break;
- 			}
+ 			printf("The winner is %s {%c}\n\n",player01.name,Gboard[0][colum]);
+ 			Who_is_The_Winner == "winner";
+ 			break;
  		}
  		
+ 		else if( Gboard[0][colum] == 'O')
+ 		{
+ 			printf("The winner is %s {%c}\n\n",player02.name,Gboard[0][colum]);
+ 			Who_is_The_Winner == "winner";
+ 			break;
+ 		}
+ 		
+ 		
  	}
  	
- 	//Primary and secondary diameter
+ 	//Primary diameter
  	
- 	for(Row = 0 ;Row < 3 ;++Row)
- 	{
- 		for(Colum = 0 ; Colum < 3;++Colum)
+ 		if( Gboard[0][0] != NULL && Gboard[1][1] != NULL && Gboard[2][2] != NULL )
+ 		{
+ 		   if( Gboard[0][0] == Gboard[1][1] && Gboard[0][0] == Gboard[2][2])
+ 		   
+ 		   if(Gboard[0][0] == 'X')
+ 		    {
+ 			   printf("The winner is %s {%c}\n\n",player01.name,Gboard[0][0]);
+ 			   Who_is_The_Winner == "winner";
+ 			   
+ 			   
+ 		    }
  		
- 		if( Row == Colum)
+ 		    else if( Gboard[0][0] == 'O')
+ 		    {
+ 			    printf("The winner is %s {%c}\n\n",player02.name,Gboard[0][0]);
+ 			    Who_is_The_Winner == "winner";
+ 		    }
+ 		    
+ 		    
+ 		}
+ 	
+    //Secondary line 
  		
- 		if(Gboard[Row][Colum] == 'X')
- 			{
- 				printf("The Winner is %s {%c} " ,player01.name , Gboard[Row][Colum]);
- 				break;
- 			}
+ 		if( Gboard[0][2] != NULL && Gboard[1][1] != NULL && Gboard[2][0] != NULL )
+ 		{
+ 		   if( Gboard[0][2] == Gboard[1][1] && Gboard[0][2] == Gboard[2][0])
+ 		   
+ 		   if(Gboard[0][2] == 'X')
+ 		    {
+ 			   printf("The winner is %s {%c}\n\n",player01.name,Gboard[0][2]);
+ 			   Who_is_The_Winner == "winner";
+ 			   
+ 		    }
+ 		
+ 		    else if( Gboard[0][colum] == 'O')
+ 		    {
+ 			    printf("The winner is %s {%c}\n\n",player02.name,Gboard[0][2]);
+ 			    Who_is_The_Winner == "winner";
+ 		    }
+ 		    
+ 		    
+ 		}
+ 		
+ 		if( Who_is_The_Winner != "winner")
+ 		{
+ 			printf("Contunie !\n\n");
  			
- 			else if(Gboard[Row][Colum] == 'O')
- 			{
- 				printf("The Winner is %s {%c} " ,player02.name , Gboard[Row][Colum]);
- 				break;
- 			}
- 	}
+ 		}
  	
- 	for(Row = 0 ;Row < 3 ;++Row)
- 	{
- 		for(Colum = 0 ; Colum < 3;++Colum)
- 		
- 		if( Row + Colum == 2 )
- 		
- 		if(Gboard[Row][Colum] == 'X')
- 			{
- 				printf("The Winner is %s {%c} " ,player01.name , Gboard[Row][Colum]);
- 				break;
- 			}
- 			
- 			else if(Gboard[Row][Colum] == 'O')
- 			{
- 				printf("The Winner is %s {%c} " ,player02.name , Gboard[Row][Colum]);
- 				break;
- 			}
- 	}
- }
- 
- 
+}
 int main (void)
 {
 	int board[9] =  { NULL };
-	
-	
-	
+
 	int index = 0 , indice = 1  ;
 	
 	int turn = 1 ;
-	
+
 	PlayersInfos  player01 , player02 ;
 	
 	int round	;
@@ -323,9 +339,9 @@ int main (void)
 	
 	printf("\033[0;36m"); //Set the text to the color cyan
 	
-	printf("                  | 1 || 2 || 3 |\n\n");
-	printf("                  | 4 || 5 || 6 |\n\n");
-	printf("                  | 7 || 8 || 9 |\n\n");
+	printf("                \\  | 1 || 2 || 3 |  /\n\n");
+	printf("                 | | 4 || 5 || 6 | |\n\n");
+	printf("                /  | 7 || 8 || 9 |  \\\n\n");
 
 
 	printf("\n\n");
@@ -384,7 +400,6 @@ int main (void)
 
 	do
 	{
-		
 		printf("\033[0;36m"); //Set the text to the color cyan
 		
 		printf("Player One {1} %s Your Turn IDX=%i ( Choice %i) : ",player01.name,index , turn);
@@ -393,7 +408,7 @@ int main (void)
 			
 		while( board[index] == board[indice])
 		{
-			printf("\n\n");
+		        printf("\n\n");
 			
 			printf("The Previous Player Already Choosed This number \n\n");
 			
@@ -449,7 +464,7 @@ int main (void)
 		
 	    
 		ShowMeTheBoard(board , player01 , player02);
-		
+	
 		printf("\n\n");
 		
 		index += 2 ;
@@ -458,7 +473,7 @@ int main (void)
 		
 		turn += 1 ;
 	
-	}while( turn <= 5 );
+	}while( turn <= 5 || Who_is_The_Winner == "winner" );
 	
 	printf("\n\n");
 
